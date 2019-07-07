@@ -20,7 +20,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="都市小码农">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://lianyf.top/index.html">
 <meta property="og:site_name" content="都市小码农">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -194,9 +194,9 @@
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/lianyf1994">GitHub</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="http://lianyf.top/">MOxFIVE</a>
                     
                     </div>
                 </section>
@@ -260,11 +260,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java腾讯邮箱发送邮件" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/07/06/hello-world/" class="article-date">
-      <time datetime="2019-07-06T14:49:08.423Z" itemprop="datePublished">2019-07-06</time>
+      <a href="/2019/07/07/java腾讯邮箱发送邮件/" class="article-date">
+      <time datetime="2019-07-07T14:12:29.289Z" itemprop="datePublished">2019-07-07</time>
 </a>
 
 
@@ -279,7 +279,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/06/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/07/07/java腾讯邮箱发送邮件/">java发送腾讯企业邮件-可用于发送邮箱验证码</a>
     </h1>
   
 
@@ -289,19 +289,157 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <pre><code class="java"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
+<span class="keyword">public</span> <span class="keyword">static</span> String HOST = <span class="string">"smtp.exmail.qq.com"</span>;
+<span class="keyword">public</span> <span class="keyword">static</span> String PORT = <span class="string">"465"</span>;
+<span class="keyword">public</span> <span class="keyword">static</span> String FROM = <span class="string">"yiwangdajin@yimazhuisu.cn"</span>;
+<span class="keyword">public</span> <span class="keyword">static</span> String PWD = <span class="string">"88888888Ywdj"</span>;
+<span class="keyword">public</span> <span class="keyword">static</span> String SMTP = <span class="string">"smtp"</span>;
+<span class="comment">//使用smtp身份验证</span>
+<span class="keyword">public</span> <span class="keyword">static</span> String AUTH=<span class="string">"true"</span>;
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+   sendHtmlMail(<span class="string">"m13266743966@163.com"</span>,<span class="string">"邮箱测试"</span>,<span class="string">"18372620657"</span>);
+}
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<span class="comment">/**</span>
+<span class="comment"> * 发送邮箱方法.</span>
+<span class="comment"> */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">sendEmail</span><span class="params">(String title, String eAddress, String content)</span> </span>{
+   Session session = setsslSecuritysession();
+   <span class="keyword">try</span> {
+      Message msg = <span class="keyword">new</span> MimeMessage(session);
+      <span class="comment">// Set message attributes</span>
+      msg.setFrom(<span class="keyword">new</span> InternetAddress(FROM));
+      InternetAddress[] address = { <span class="keyword">new</span> InternetAddress(eAddress) };
+      msg.setRecipients(Message.RecipientType.TO, address);
+      msg.setSubject(title);
+      msg.setSentDate(<span class="keyword">new</span> Date());
+      msg.setContent(content, <span class="string">"text/html;charset=utf-8"</span>);
+
+      Transport.send(msg);
+      <span class="keyword">return</span> <span class="keyword">true</span>;
+   } <span class="keyword">catch</span> (MessagingException e) {
+      LOGGER.error(e.getMessage(), e);
+      <span class="keyword">return</span> <span class="keyword">false</span>;
+   }
+}
+
+<span class="comment">/**</span>
+<span class="comment"> * 获取安全证书.</span>
+<span class="comment"> */</span>
+<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Session <span class="title">setsslSecuritysession</span><span class="params">()</span> </span>{
+   String sslFactory = <span class="string">"javax.net.ssl.SSLSocketFactory"</span>;
+   Properties props = <span class="keyword">new</span> Properties();
+   <span class="comment">//协议</span>
+   props.setProperty(<span class="string">"mail.transport.protocol"</span>, PORT);
+   <span class="comment">//服务器</span>
+   props.setProperty(<span class="string">"mail.smtp.host"</span>, HOST);
+   <span class="comment">//端口</span>
+   props.setProperty(<span class="string">"mail.smtp.port"</span>, PORT);
+   <span class="comment">//使用smtp身份验证</span>
+   props.setProperty(<span class="string">"mail.smtp.auth"</span>, <span class="string">"true"</span>);
+
+   MailSSLSocketFactory sf = <span class="keyword">null</span>;
+   <span class="keyword">try</span> {
+      sf = <span class="keyword">new</span> MailSSLSocketFactory();
+      sf.setTrustAllHosts(<span class="keyword">true</span>);
+   } <span class="keyword">catch</span> (GeneralSecurityException e) {
+      LOGGER.error(e.getMessage(), e);
+   }
+   props.put(<span class="string">"mail.smtp.ssl.enable"</span>, <span class="string">"true"</span>);
+   props.put(<span class="string">"mail.smtp.ssl.socketFactory"</span>, sf);
+
+   Authenticator authenticator = <span class="keyword">new</span> Authenticator() {
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span> </span>{
+         <span class="keyword">return</span> <span class="keyword">new</span> PasswordAuthentication(FROM, PWD);
+      }
+   };
+   <span class="keyword">return</span> Session.getDefaultInstance(props, authenticator);
+
+}
+
+<span class="comment">/**</span>
+<span class="comment"> * 验证邮箱.</span>
+<span class="comment"> */</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkEmail</span><span class="params">(String email)</span> </span>{
+   <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;
+   <span class="keyword">try</span> {
+      String check = <span class="string">"[\\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"</span>;
+      Pattern regex = Pattern.compile(check);
+      Matcher matcher = regex.matcher(email);
+      flag = matcher.matches();
+   } <span class="keyword">catch</span> (Exception e) {
+      LOGGER.error(e.getMessage(), e);
+      flag = <span class="keyword">false</span>;
+   }
+   <span class="keyword">return</span> flag;
+}
+
+
+
+   <span class="comment">/**</span>
+<span class="comment">    * 发送邮件</span>
+<span class="comment">    *</span>
+<span class="comment">    * <span class="doctag">@param</span> to 接受人</span>
+<span class="comment">    * <span class="doctag">@param</span> subject 主题</span>
+<span class="comment">    * <span class="doctag">@param</span> html 发送内容</span>
+<span class="comment">    * <span class="doctag">@throws</span> MessagingException 异常</span>
+<span class="comment">    * <span class="doctag">@throws</span> UnsupportedEncodingException 异常</span>
+<span class="comment">    */</span>
+   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendHtmlMail</span><span class="params">(String to, String subject, String html)</span> </span>{
+   Properties prop = <span class="keyword">new</span> Properties();
+   <span class="comment">//协议</span>
+   prop.setProperty(<span class="string">"mail.transport.protocol"</span>, SMTP);
+   <span class="comment">//服务器</span>
+   prop.setProperty(<span class="string">"mail.smtp.host"</span>, HOST);
+   <span class="comment">//端口</span>
+   prop.setProperty(<span class="string">"mail.smtp.port"</span>, PORT);
+   <span class="comment">//使用smtp身份验证</span>
+   prop.setProperty(<span class="string">"mail.smtp.auth"</span>, AUTH);
+   <span class="comment">//使用SSL，企业邮箱必需！</span>
+   <span class="comment">//开启安全协议</span>
+   MailSSLSocketFactory sf = <span class="keyword">null</span>;
+   <span class="keyword">try</span> {
+      sf = <span class="keyword">new</span> MailSSLSocketFactory();
+      sf.setTrustAllHosts(<span class="keyword">true</span>);
+   } <span class="keyword">catch</span> (GeneralSecurityException e1) {
+      e1.printStackTrace();
+   }
+   prop.put(<span class="string">"mail.smtp.ssl.enable"</span>, <span class="string">"true"</span>);
+   prop.put(<span class="string">"mail.smtp.ssl.socketFactory"</span>, sf);
+   <span class="comment">//</span>
+   <span class="comment">//获取Session对象</span>
+   Session s = Session.getDefaultInstance(prop,<span class="keyword">new</span> Authenticator() {
+      <span class="comment">//此访求返回用户和密码的对象</span>
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span> </span>{
+         PasswordAuthentication pa = <span class="keyword">new</span> PasswordAuthentication(FROM, PWD);
+         <span class="keyword">return</span> pa;
+      }
+   });
+   <span class="comment">//设置session的调试模式，发布时取消</span>
+   <span class="comment">//s.setDebug(true);</span>
+   MimeMessage mimeMessage = <span class="keyword">new</span> MimeMessage(s);
+   <span class="keyword">try</span> {
+      mimeMessage.setFrom(<span class="keyword">new</span> InternetAddress(FROM,FROM));
+      mimeMessage.addRecipient(Message.RecipientType.TO, <span class="keyword">new</span> InternetAddress(to));
+      <span class="comment">//设置主题</span>
+      mimeMessage.setSubject(subject);
+      mimeMessage.setSentDate(<span class="keyword">new</span> Date());
+      <span class="comment">//设置内容</span>
+      mimeMessage.setText(html);
+      mimeMessage.saveChanges();
+      <span class="comment">//发送</span>
+      Transport.send(mimeMessage);
+   } <span class="keyword">catch</span> (Exception e) {
+      LOGGER.error(e.getMessage(),e);
+   }
+
+}</code></pre>
 
       
     </div>
