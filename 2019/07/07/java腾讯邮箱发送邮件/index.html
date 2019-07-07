@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &quot;smtp.exmail.qq.com&quot;; public static String PORT = &quot;465&quot;; public static String FROM = &quot;yiwang">
+<meta name="description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &amp;quot;smtp.exmail.qq.com&amp;quot;; public static String PORT = &amp;quot;465&amp;quot;; public static S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java发送腾讯企业邮件-可用于发送邮箱验证码">
 <meta property="og:url" content="http://lianyf.top/2019/07/07/java腾讯邮箱发送邮件/index.html">
 <meta property="og:site_name" content="都市小码农">
-<meta property="og:description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &quot;smtp.exmail.qq.com&quot;; public static String PORT = &quot;465&quot;; public static String FROM = &quot;yiwang">
+<meta property="og:description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &amp;quot;smtp.exmail.qq.com&amp;quot;; public static String PORT = &amp;quot;465&amp;quot;; public static S">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T14:13:12.797Z">
+<meta property="og:updated_time" content="2019-07-07T14:32:53.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java发送腾讯企业邮件-可用于发送邮箱验证码">
-<meta name="twitter:description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &quot;smtp.exmail.qq.com&quot;; public static String PORT = &quot;465&quot;; public static String FROM = &quot;yiwang">
+<meta name="twitter:description" content="private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class); public static String HOST = &amp;quot;smtp.exmail.qq.com&amp;quot;; public static String PORT = &amp;quot;465&amp;quot;; public static S">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -293,157 +293,158 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <pre><code class="java"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
-<span class="keyword">public</span> <span class="keyword">static</span> String HOST = <span class="string">"smtp.exmail.qq.com"</span>;
-<span class="keyword">public</span> <span class="keyword">static</span> String PORT = <span class="string">"465"</span>;
-<span class="keyword">public</span> <span class="keyword">static</span> String FROM = <span class="string">"yiwangdajin@yimazhuisu.cn"</span>;
-<span class="keyword">public</span> <span class="keyword">static</span> String PWD = <span class="string">"88888888Ywdj"</span>;
-<span class="keyword">public</span> <span class="keyword">static</span> String SMTP = <span class="string">"smtp"</span>;
-<span class="comment">//使用smtp身份验证</span>
-<span class="keyword">public</span> <span class="keyword">static</span> String AUTH=<span class="string">"true"</span>;
+        <pre><code class="language-java">private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtils.class);
+public static String HOST = &quot;smtp.exmail.qq.com&quot;;
+public static String PORT = &quot;465&quot;;
+public static String FROM = &quot;您的邮箱账号&quot;;
+public static String PWD = &quot;您的邮箱密码&quot;;
+public static String SMTP = &quot;smtp&quot;;
+//使用smtp身份验证
+public static String AUTH=&quot;true&quot;;
 
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+public static void main(String[] args) throws Exception {
 
-   sendHtmlMail(<span class="string">"m13266743966@163.com"</span>,<span class="string">"邮箱测试"</span>,<span class="string">"18372620657"</span>);
+   sendHtmlMail(&quot;m13266743966@163.com&quot;,&quot;邮箱测试&quot;,&quot;测试手机号&quot;);
 }
 
 
-<span class="comment">/**</span>
-<span class="comment"> * 发送邮箱方法.</span>
-<span class="comment"> */</span>
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">sendEmail</span><span class="params">(String title, String eAddress, String content)</span> </span>{
+/**
+ * 发送邮箱方法.
+ */
+public static boolean sendEmail(String title, String eAddress, String content) {
    Session session = setsslSecuritysession();
-   <span class="keyword">try</span> {
-      Message msg = <span class="keyword">new</span> MimeMessage(session);
-      <span class="comment">// Set message attributes</span>
-      msg.setFrom(<span class="keyword">new</span> InternetAddress(FROM));
-      InternetAddress[] address = { <span class="keyword">new</span> InternetAddress(eAddress) };
+   try {
+      Message msg = new MimeMessage(session);
+      // Set message attributes
+      msg.setFrom(new InternetAddress(FROM));
+      InternetAddress[] address = { new InternetAddress(eAddress) };
       msg.setRecipients(Message.RecipientType.TO, address);
       msg.setSubject(title);
-      msg.setSentDate(<span class="keyword">new</span> Date());
-      msg.setContent(content, <span class="string">"text/html;charset=utf-8"</span>);
+      msg.setSentDate(new Date());
+      msg.setContent(content, &quot;text/html;charset=utf-8&quot;);
 
       Transport.send(msg);
-      <span class="keyword">return</span> <span class="keyword">true</span>;
-   } <span class="keyword">catch</span> (MessagingException e) {
+      return true;
+   } catch (MessagingException e) {
       LOGGER.error(e.getMessage(), e);
-      <span class="keyword">return</span> <span class="keyword">false</span>;
+      return false;
    }
 }
 
-<span class="comment">/**</span>
-<span class="comment"> * 获取安全证书.</span>
-<span class="comment"> */</span>
-<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Session <span class="title">setsslSecuritysession</span><span class="params">()</span> </span>{
-   String sslFactory = <span class="string">"javax.net.ssl.SSLSocketFactory"</span>;
-   Properties props = <span class="keyword">new</span> Properties();
-   <span class="comment">//协议</span>
-   props.setProperty(<span class="string">"mail.transport.protocol"</span>, PORT);
-   <span class="comment">//服务器</span>
-   props.setProperty(<span class="string">"mail.smtp.host"</span>, HOST);
-   <span class="comment">//端口</span>
-   props.setProperty(<span class="string">"mail.smtp.port"</span>, PORT);
-   <span class="comment">//使用smtp身份验证</span>
-   props.setProperty(<span class="string">"mail.smtp.auth"</span>, <span class="string">"true"</span>);
+/**
+ * 获取安全证书.
+ */
+private static Session setsslSecuritysession() {
+   String sslFactory = &quot;javax.net.ssl.SSLSocketFactory&quot;;
+   Properties props = new Properties();
+   //协议
+   props.setProperty(&quot;mail.transport.protocol&quot;, PORT);
+   //服务器
+   props.setProperty(&quot;mail.smtp.host&quot;, HOST);
+   //端口
+   props.setProperty(&quot;mail.smtp.port&quot;, PORT);
+   //使用smtp身份验证
+   props.setProperty(&quot;mail.smtp.auth&quot;, &quot;true&quot;);
 
-   MailSSLSocketFactory sf = <span class="keyword">null</span>;
-   <span class="keyword">try</span> {
-      sf = <span class="keyword">new</span> MailSSLSocketFactory();
-      sf.setTrustAllHosts(<span class="keyword">true</span>);
-   } <span class="keyword">catch</span> (GeneralSecurityException e) {
+   MailSSLSocketFactory sf = null;
+   try {
+      sf = new MailSSLSocketFactory();
+      sf.setTrustAllHosts(true);
+   } catch (GeneralSecurityException e) {
       LOGGER.error(e.getMessage(), e);
    }
-   props.put(<span class="string">"mail.smtp.ssl.enable"</span>, <span class="string">"true"</span>);
-   props.put(<span class="string">"mail.smtp.ssl.socketFactory"</span>, sf);
+   props.put(&quot;mail.smtp.ssl.enable&quot;, &quot;true&quot;);
+   props.put(&quot;mail.smtp.ssl.socketFactory&quot;, sf);
 
-   Authenticator authenticator = <span class="keyword">new</span> Authenticator() {
-      <span class="meta">@Override</span>
-      <span class="function"><span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span> </span>{
-         <span class="keyword">return</span> <span class="keyword">new</span> PasswordAuthentication(FROM, PWD);
+   Authenticator authenticator = new Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+         return new PasswordAuthentication(FROM, PWD);
       }
    };
-   <span class="keyword">return</span> Session.getDefaultInstance(props, authenticator);
+   return Session.getDefaultInstance(props, authenticator);
 
 }
 
-<span class="comment">/**</span>
-<span class="comment"> * 验证邮箱.</span>
-<span class="comment"> */</span>
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkEmail</span><span class="params">(String email)</span> </span>{
-   <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;
-   <span class="keyword">try</span> {
-      String check = <span class="string">"[\\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"</span>;
+/**
+ * 验证邮箱.
+ */
+public static boolean checkEmail(String email) {
+   boolean flag = false;
+   try {
+      String check = &quot;[\\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?&quot;;
       Pattern regex = Pattern.compile(check);
       Matcher matcher = regex.matcher(email);
       flag = matcher.matches();
-   } <span class="keyword">catch</span> (Exception e) {
+   } catch (Exception e) {
       LOGGER.error(e.getMessage(), e);
-      flag = <span class="keyword">false</span>;
+      flag = false;
    }
-   <span class="keyword">return</span> flag;
+   return flag;
 }
 
 
 
-   <span class="comment">/**</span>
-<span class="comment">    * 发送邮件</span>
-<span class="comment">    *</span>
-<span class="comment">    * <span class="doctag">@param</span> to 接受人</span>
-<span class="comment">    * <span class="doctag">@param</span> subject 主题</span>
-<span class="comment">    * <span class="doctag">@param</span> html 发送内容</span>
-<span class="comment">    * <span class="doctag">@throws</span> MessagingException 异常</span>
-<span class="comment">    * <span class="doctag">@throws</span> UnsupportedEncodingException 异常</span>
-<span class="comment">    */</span>
-   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendHtmlMail</span><span class="params">(String to, String subject, String html)</span> </span>{
-   Properties prop = <span class="keyword">new</span> Properties();
-   <span class="comment">//协议</span>
-   prop.setProperty(<span class="string">"mail.transport.protocol"</span>, SMTP);
-   <span class="comment">//服务器</span>
-   prop.setProperty(<span class="string">"mail.smtp.host"</span>, HOST);
-   <span class="comment">//端口</span>
-   prop.setProperty(<span class="string">"mail.smtp.port"</span>, PORT);
-   <span class="comment">//使用smtp身份验证</span>
-   prop.setProperty(<span class="string">"mail.smtp.auth"</span>, AUTH);
-   <span class="comment">//使用SSL，企业邮箱必需！</span>
-   <span class="comment">//开启安全协议</span>
-   MailSSLSocketFactory sf = <span class="keyword">null</span>;
-   <span class="keyword">try</span> {
-      sf = <span class="keyword">new</span> MailSSLSocketFactory();
-      sf.setTrustAllHosts(<span class="keyword">true</span>);
-   } <span class="keyword">catch</span> (GeneralSecurityException e1) {
+   /**
+    * 发送邮件
+    *
+    * @param to 接受人
+    * @param subject 主题
+    * @param html 发送内容
+    * @throws MessagingException 异常
+    * @throws UnsupportedEncodingException 异常
+    */
+   public static void sendHtmlMail(String to, String subject, String html) {
+   Properties prop = new Properties();
+   //协议
+   prop.setProperty(&quot;mail.transport.protocol&quot;, SMTP);
+   //服务器
+   prop.setProperty(&quot;mail.smtp.host&quot;, HOST);
+   //端口
+   prop.setProperty(&quot;mail.smtp.port&quot;, PORT);
+   //使用smtp身份验证
+   prop.setProperty(&quot;mail.smtp.auth&quot;, AUTH);
+   //使用SSL，企业邮箱必需！
+   //开启安全协议
+   MailSSLSocketFactory sf = null;
+   try {
+      sf = new MailSSLSocketFactory();
+      sf.setTrustAllHosts(true);
+   } catch (GeneralSecurityException e1) {
       e1.printStackTrace();
    }
-   prop.put(<span class="string">"mail.smtp.ssl.enable"</span>, <span class="string">"true"</span>);
-   prop.put(<span class="string">"mail.smtp.ssl.socketFactory"</span>, sf);
-   <span class="comment">//</span>
-   <span class="comment">//获取Session对象</span>
-   Session s = Session.getDefaultInstance(prop,<span class="keyword">new</span> Authenticator() {
-      <span class="comment">//此访求返回用户和密码的对象</span>
-      <span class="meta">@Override</span>
-      <span class="function"><span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span><span class="params">()</span> </span>{
-         PasswordAuthentication pa = <span class="keyword">new</span> PasswordAuthentication(FROM, PWD);
-         <span class="keyword">return</span> pa;
+   prop.put(&quot;mail.smtp.ssl.enable&quot;, &quot;true&quot;);
+   prop.put(&quot;mail.smtp.ssl.socketFactory&quot;, sf);
+   //
+   //获取Session对象
+   Session s = Session.getDefaultInstance(prop,new Authenticator() {
+      //此访求返回用户和密码的对象
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+         PasswordAuthentication pa = new PasswordAuthentication(FROM, PWD);
+         return pa;
       }
    });
-   <span class="comment">//设置session的调试模式，发布时取消</span>
-   <span class="comment">//s.setDebug(true);</span>
-   MimeMessage mimeMessage = <span class="keyword">new</span> MimeMessage(s);
-   <span class="keyword">try</span> {
-      mimeMessage.setFrom(<span class="keyword">new</span> InternetAddress(FROM,FROM));
-      mimeMessage.addRecipient(Message.RecipientType.TO, <span class="keyword">new</span> InternetAddress(to));
-      <span class="comment">//设置主题</span>
+   //设置session的调试模式，发布时取消
+   //s.setDebug(true);
+   MimeMessage mimeMessage = new MimeMessage(s);
+   try {
+      mimeMessage.setFrom(new InternetAddress(FROM,FROM));
+      mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+      //设置主题
       mimeMessage.setSubject(subject);
-      mimeMessage.setSentDate(<span class="keyword">new</span> Date());
-      <span class="comment">//设置内容</span>
+      mimeMessage.setSentDate(new Date());
+      //设置内容
       mimeMessage.setText(html);
       mimeMessage.saveChanges();
-      <span class="comment">//发送</span>
+      //发送
       Transport.send(mimeMessage);
-   } <span class="keyword">catch</span> (Exception e) {
+   } catch (Exception e) {
       LOGGER.error(e.getMessage(),e);
    }
 
-}</code></pre>
+}
+</code></pre>
 
       
     </div>
@@ -455,7 +456,7 @@
         <p><span>本文标题:</span><a href="/2019/07/07/java腾讯邮箱发送邮件/">java发送腾讯企业邮件-可用于发送邮箱验证码</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">都市小码农</a></p>
         <p><span>发布时间:</span>2019-07-07, 22:12:29</p>
-        <p><span>最后更新:</span>2019-07-07, 22:13:12</p>
+        <p><span>最后更新:</span>2019-07-07, 22:32:53</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/07/07/java腾讯邮箱发送邮件/" title="java发送腾讯企业邮件-可用于发送邮箱验证码">http://lianyf.top/2019/07/07/java腾讯邮箱发送邮件/</a>
             <span class="copy-path" data-clipboard-text="原文: http://lianyf.top/2019/07/07/java腾讯邮箱发送邮件/　　作者: 都市小码农" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
